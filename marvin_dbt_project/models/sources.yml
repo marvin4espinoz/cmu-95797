@@ -1,0 +1,632 @@
+#paste in here the schema pumped out by dbt using dbt's codegen
+
+#staging models - data models
+# to spit these out: 
+# dbt run-operation generate_model_yaml --args '{"model_names": ["stg__bike_data", "stg__central_park_weather", "stg__fhv_bases", "stg__fhv_tripdata", "stg__fhvhv_tripdata", "stg__green_tripdata", "stg__yellow_tripdata"]}'
+
+models:
+  - name: stg__bike_data
+    description: ""
+    columns:
+      - name: bike_trip_id
+        description: ""
+
+      - name: tripduration_sec_clean
+        description: ""
+
+      - name: start_time
+        description: ""
+
+      - name: stoptime
+        description: ""
+
+      - name: start_station_id
+        description: ""
+
+      - name: start_station_name
+        description: ""
+
+      - name: start_location
+        description: ""
+
+      - name: end_station_id
+        description: ""
+
+      - name: end_station_name
+        description: ""
+
+      - name: end_location
+        description: ""
+
+      - name: bikeid
+        description: ""
+
+      - name: usertype
+        description: ""
+
+      - name: birth_year
+        description: ""
+
+      - name: age
+        description: ""
+
+      - name: gender_clean
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__central_park_weather
+    description: ""
+    columns:
+      - name: station_date_id
+        description: ""
+
+      - name: station_id
+        description: ""
+
+      - name: station_name
+        description: ""
+
+      - name: date_of_observation
+        description: ""
+
+      - name: average_wind_speed
+        description: ""
+
+      - name: precipitation_amount
+        description: ""
+
+      - name: snowfall_amount
+        description: ""
+
+      - name: snow_depth
+        description: ""
+
+      - name: temperature_max
+        description: ""
+
+      - name: temperature_min
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__fhv_bases
+    description: ""
+    columns:
+      - name: base_number
+        description: ""
+
+      - name: company_name
+        description: ""
+
+      - name: company_service_name
+        description: ""
+
+      - name: ride_share_service_used
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__fhv_tripdata
+    description: ""
+    columns:
+      - name: fhv_trip_id
+        description: ""
+
+      - name: dispatch_base_license_num
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: pickup_date_only
+        description: ""
+
+      - name: dropoff_date_only
+        description: ""
+
+      - name: taxi_zone_began
+        description: ""
+
+      - name: taxi_zone_ended
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__fhvhv_tripdata
+    description: ""
+    columns:
+      - name: fhvhv_trip_id
+        description: ""
+
+      - name: taxi_license_number
+        description: ""
+
+      - name: dispatch_base_license_number
+        description: ""
+
+      - name: pickup_datetime
+        description: ""
+
+      - name: dropoff_datetime
+        description: ""
+
+      - name: pickup_date_only
+        description: ""
+
+      - name: dropoff_date_only
+        description: ""
+
+      - name: taxi_zone_location_began
+        description: ""
+
+      - name: taxi_zone_location_ended
+        description: ""
+
+      - name: original_base_of_trip_request
+        description: ""
+
+      - name: datetime_of_trip_request
+        description: ""
+
+      - name: datetime_of_driver_arrival
+        description: ""
+
+      - name: trip_miles
+        description: ""
+
+      - name: trip_time_seconds
+        description: ""
+
+      - name: trip_fare_amount
+        description: ""
+
+      - name: tolls_paid_amount
+        description: ""
+
+      - name: bcf_collected_amount
+        description: ""
+
+      - name: sales_tax_amount
+        description: ""
+
+      - name: congestion_surcharge_amount
+        description: ""
+
+      - name: airport_fee_amount
+        description: ""
+
+      - name: tips_amount
+        description: ""
+
+      - name: driver_pay_amount
+        description: ""
+
+      - name: shared_request_flag
+        description: ""
+
+      - name: shared_match_flag
+        description: ""
+
+      - name: access_a_ride_flag
+        description: ""
+
+      - name: wav_request_flag
+        description: ""
+
+      - name: wav_match_flag
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__green_tripdata
+    description: ""
+    columns:
+      - name: green_trip_id
+        description: ""
+
+      - name: lpep_provider_id
+        description: ""
+
+      - name: lpep_pickup_datetime
+        description: ""
+
+      - name: lpep_dropoff_datetime
+        description: ""
+
+      - name: lpep_pickup_date_only
+        description: ""
+
+      - name: lpep_dropoff_date_only
+        description: ""
+
+      - name: passenger_count_trip
+        description: ""
+
+      - name: trip_miles
+        description: ""
+
+      - name: taxi_zone_location_pickup
+        description: ""
+
+      - name: taxi_zone_location_dropoff
+        description: ""
+
+      - name: trip_code_id
+        description: ""
+
+      - name: store_and_fwd_flag
+        description: ""
+
+      - name: trip_payment_type
+        description: ""
+
+      - name: trip_fare_amount
+        description: ""
+
+      - name: extra_charges_trip
+        description: ""
+
+      - name: mta_tax_amount
+        description: ""
+
+      - name: improvement_surcharge
+        description: ""
+
+      - name: tip_amount_nocash
+        description: ""
+
+      - name: tolls_amount
+        description: ""
+
+      - name: total_amount_lesscash
+        description: ""
+
+      - name: trip_type
+        description: ""
+
+      - name: filename
+        description: ""
+
+  - name: stg__yellow_tripdata
+    description: ""
+    columns:
+      - name: yellow_trip_id
+        description: ""
+
+      - name: tpep_provider_id
+        description: ""
+
+      - name: tpep_pickup_datetime
+        description: ""
+
+      - name: tpep_dropoff_datetime
+        description: ""
+
+      - name: tpep_pickup_date_only
+        description: ""
+
+      - name: tpep_dropoff_date_only
+        description: ""
+
+      - name: passenger_count_trip
+        description: ""
+
+      - name: trip_miles
+        description: ""
+
+      - name: taxi_zone_location_pickup
+        description: ""
+
+      - name: taxi_zone_location_dropoff
+        description: ""
+
+      - name: trip_code_id
+        description: ""
+
+      - name: store_and_fwd_flag
+        description: ""
+
+      - name: trip_payment_type
+        description: ""
+
+      - name: trip_fare_amount
+        description: ""
+
+      - name: extra_charges_trip
+        description: ""
+
+      - name: mta_tax_amount
+        description: ""
+
+      - name: improvement_surcharge
+        description: ""
+
+      - name: tip_amount_nocash
+        description: ""
+
+      - name: tolls_amount
+        description: ""
+
+      - name: total_amount_lesscash
+        description: ""
+
+      - name: congestion_surcharge_amount
+        description: ""
+
+      - name: airport_fee_amount
+        description: ""
+
+      - name: filename
+        description: ""
+
+
+#raw data sources
+
+sources:
+  - name: main
+    tables:
+      - name: bike_data
+        columns:
+          - name: tripduration
+            data_type: CHARACTER VARYING(256)
+          - name: starttime
+            data_type: CHARACTER VARYING(256)
+          - name: stoptime
+            data_type: CHARACTER VARYING(256)
+          - name: start station id
+            data_type: CHARACTER VARYING(256)
+          - name: start station name
+            data_type: CHARACTER VARYING(256)
+          - name: start station latitude
+            data_type: CHARACTER VARYING(256)
+          - name: start station longitude
+            data_type: CHARACTER VARYING(256)
+          - name: end station id
+            data_type: CHARACTER VARYING(256)
+          - name: end station name
+            data_type: CHARACTER VARYING(256)
+          - name: end station latitude
+            data_type: CHARACTER VARYING(256)
+          - name: end station longitude
+            data_type: CHARACTER VARYING(256)
+          - name: bikeid
+            data_type: CHARACTER VARYING(256)
+          - name: usertype
+            data_type: CHARACTER VARYING(256)
+          - name: birth year
+            data_type: CHARACTER VARYING(256)
+          - name: gender
+            data_type: CHARACTER VARYING(256)
+          - name: ride_id
+            data_type: CHARACTER VARYING(256)
+          - name: rideable_type
+            data_type: CHARACTER VARYING(256)
+          - name: started_at
+            data_type: CHARACTER VARYING(256)
+          - name: ended_at
+            data_type: CHARACTER VARYING(256)
+          - name: start_station_name
+            data_type: CHARACTER VARYING(256)
+          - name: start_station_id
+            data_type: CHARACTER VARYING(256)
+          - name: end_station_name
+            data_type: CHARACTER VARYING(256)
+          - name: end_station_id
+            data_type: CHARACTER VARYING(256)
+          - name: start_lat
+            data_type: CHARACTER VARYING(256)
+          - name: start_lng
+            data_type: CHARACTER VARYING(256)
+          - name: end_lat
+            data_type: CHARACTER VARYING(256)
+          - name: end_lng
+            data_type: CHARACTER VARYING(256)
+          - name: member_casual
+            data_type: CHARACTER VARYING(256)
+          - name: filename
+            data_type: CHARACTER VARYING(256)
+
+      - name: central_park_weather
+        columns:
+          - name: station
+            data_type: CHARACTER VARYING(256)
+          - name: name
+            data_type: CHARACTER VARYING(256)
+          - name: date
+            data_type: CHARACTER VARYING(256)
+          - name: awnd
+            data_type: CHARACTER VARYING(256)
+          - name: prcp
+            data_type: CHARACTER VARYING(256)
+          - name: snow
+            data_type: CHARACTER VARYING(256)
+          - name: snwd
+            data_type: CHARACTER VARYING(256)
+          - name: tmax
+            data_type: CHARACTER VARYING(256)
+          - name: tmin
+            data_type: CHARACTER VARYING(256)
+          - name: filename
+            data_type: CHARACTER VARYING(256)
+
+      - name: fhv_bases
+        columns:
+          - name: base_number
+            data_type: CHARACTER VARYING(256)
+          - name: base_name
+            data_type: CHARACTER VARYING(256)
+          - name: dba
+            data_type: CHARACTER VARYING(256)
+          - name: dba_category
+            data_type: CHARACTER VARYING(256)
+          - name: filename
+            data_type: CHARACTER VARYING(256)
+
+      - name: fhv_tripdata
+        columns:
+          - name: dispatching_base_num
+            data_type: CHARACTER VARYING(256)
+          - name: pickup_datetime
+            data_type: TIMESTAMP
+          - name: dropoff_datetime
+            data_type: TIMESTAMP
+          - name: pulocationid
+            data_type: DOUBLE
+          - name: dolocationid
+            data_type: DOUBLE
+          - name: sr_flag
+            data_type: INTEGER
+          - name: affiliated_base_number
+            data_type: CHARACTER VARYING(256)
+          - name: filename
+            data_type: CHARACTER VARYING(256)
+
+      - name: fhvhv_tripdata
+        columns:
+          - name: hvfhs_license_num
+            data_type: CHARACTER VARYING(256)
+          - name: dispatching_base_num
+            data_type: CHARACTER VARYING(256)
+          - name: originating_base_num
+            data_type: CHARACTER VARYING(256)
+          - name: request_datetime
+            data_type: TIMESTAMP
+          - name: on_scene_datetime
+            data_type: TIMESTAMP
+          - name: pickup_datetime
+            data_type: TIMESTAMP
+          - name: dropoff_datetime
+            data_type: TIMESTAMP
+          - name: pulocationid
+            data_type: BIGINT
+          - name: dolocationid
+            data_type: BIGINT
+          - name: trip_miles
+            data_type: DOUBLE
+          - name: trip_time
+            data_type: BIGINT
+          - name: base_passenger_fare
+            data_type: DOUBLE
+          - name: tolls
+            data_type: DOUBLE
+          - name: bcf
+            data_type: DOUBLE
+          - name: sales_tax
+            data_type: DOUBLE
+          - name: congestion_surcharge
+            data_type: DOUBLE
+          - name: airport_fee
+            data_type: DOUBLE
+          - name: tips
+            data_type: DOUBLE
+          - name: driver_pay
+            data_type: DOUBLE
+          - name: shared_request_flag
+            data_type: CHARACTER VARYING(256)
+          - name: shared_match_flag
+            data_type: CHARACTER VARYING(256)
+          - name: access_a_ride_flag
+            data_type: CHARACTER VARYING(256)
+          - name: wav_request_flag
+            data_type: CHARACTER VARYING(256)
+          - name: wav_match_flag
+            data_type: CHARACTER VARYING(256)
+          - name: filename
+            data_type: CHARACTER VARYING(256)
+
+      - name: green_tripdata
+        columns:
+          - name: vendorid
+            data_type: BIGINT
+          - name: lpep_pickup_datetime
+            data_type: TIMESTAMP
+          - name: lpep_dropoff_datetime
+            data_type: TIMESTAMP
+          - name: store_and_fwd_flag
+            data_type: CHARACTER VARYING(256)
+          - name: ratecodeid
+            data_type: DOUBLE
+          - name: pulocationid
+            data_type: BIGINT
+          - name: dolocationid
+            data_type: BIGINT
+          - name: passenger_count
+            data_type: DOUBLE
+          - name: trip_distance
+            data_type: DOUBLE
+          - name: fare_amount
+            data_type: DOUBLE
+          - name: extra
+            data_type: DOUBLE
+          - name: mta_tax
+            data_type: DOUBLE
+          - name: tip_amount
+            data_type: DOUBLE
+          - name: tolls_amount
+            data_type: DOUBLE
+          - name: ehail_fee
+            data_type: INTEGER
+          - name: improvement_surcharge
+            data_type: DOUBLE
+          - name: total_amount
+            data_type: DOUBLE
+          - name: payment_type
+            data_type: DOUBLE
+          - name: trip_type
+            data_type: DOUBLE
+          - name: congestion_surcharge
+            data_type: DOUBLE
+          - name: filename
+            data_type: CHARACTER VARYING(256)
+
+      - name: yellow_tripdata
+        columns:
+          - name: vendorid
+            data_type: BIGINT
+          - name: tpep_pickup_datetime
+            data_type: TIMESTAMP
+          - name: tpep_dropoff_datetime
+            data_type: TIMESTAMP
+          - name: passenger_count
+            data_type: DOUBLE
+          - name: trip_distance
+            data_type: DOUBLE
+          - name: ratecodeid
+            data_type: DOUBLE
+          - name: store_and_fwd_flag
+            data_type: CHARACTER VARYING(256)
+          - name: pulocationid
+            data_type: BIGINT
+          - name: dolocationid
+            data_type: BIGINT
+          - name: payment_type
+            data_type: BIGINT
+          - name: fare_amount
+            data_type: DOUBLE
+          - name: extra
+            data_type: DOUBLE
+          - name: mta_tax
+            data_type: DOUBLE
+          - name: tip_amount
+            data_type: DOUBLE
+          - name: tolls_amount
+            data_type: DOUBLE
+          - name: improvement_surcharge
+            data_type: DOUBLE
+          - name: total_amount
+            data_type: DOUBLE
+          - name: congestion_surcharge
+            data_type: DOUBLE
+          - name: airport_fee
+            data_type: DOUBLE
+          - name: filename
+            data_type: CHARACTER VARYING(256)

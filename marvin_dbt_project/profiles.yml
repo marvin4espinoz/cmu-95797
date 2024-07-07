@@ -1,0 +1,8 @@
+#profile.yml --> this is the profile that connects dbt to your duckdb database
+
+default: #name of the profile; in this case, it is: "default"
+  outputs:
+    dev:
+      type: duckdb
+      path: ../cmu_95797_data_warehousing_project.db #<-- add path to duckdb database
+  target: dev
