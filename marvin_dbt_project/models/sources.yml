@@ -1,375 +1,6 @@
 #paste in here the schema pumped out by dbt using dbt's codegen
 
-#staging models - data models
-# to spit these out: 
-# dbt run-operation generate_model_yaml --args '{"model_names": ["stg__bike_data", "stg__central_park_weather", "stg__fhv_bases", "stg__fhv_tripdata", "stg__fhvhv_tripdata", "stg__green_tripdata", "stg__yellow_tripdata"]}'
-
-models:
-  - name: stg__bike_data
-    description: ""
-    columns:
-      - name: bike_trip_id
-        description: ""
-
-      - name: tripduration_sec_clean
-        description: ""
-
-      - name: start_time
-        description: ""
-
-      - name: stoptime
-        description: ""
-
-      - name: start_station_id
-        description: ""
-
-      - name: start_station_name
-        description: ""
-
-      - name: start_location
-        description: ""
-
-      - name: end_station_id
-        description: ""
-
-      - name: end_station_name
-        description: ""
-
-      - name: end_location
-        description: ""
-
-      - name: bikeid
-        description: ""
-
-      - name: usertype
-        description: ""
-
-      - name: birth_year
-        description: ""
-
-      - name: age
-        description: ""
-
-      - name: gender_clean
-        description: ""
-
-      - name: filename
-        description: ""
-
-  - name: stg__central_park_weather
-    description: ""
-    columns:
-      - name: station_date_id
-        description: ""
-
-      - name: station_id
-        description: ""
-
-      - name: station_name
-        description: ""
-
-      - name: date_of_observation
-        description: ""
-
-      - name: average_wind_speed
-        description: ""
-
-      - name: precipitation_amount
-        description: ""
-
-      - name: snowfall_amount
-        description: ""
-
-      - name: snow_depth
-        description: ""
-
-      - name: temperature_max
-        description: ""
-
-      - name: temperature_min
-        description: ""
-
-      - name: filename
-        description: ""
-
-  - name: stg__fhv_bases
-    description: ""
-    columns:
-      - name: base_number
-        description: ""
-
-      - name: company_name
-        description: ""
-
-      - name: company_service_name
-        description: ""
-
-      - name: ride_share_service_used
-        description: ""
-
-      - name: filename
-        description: ""
-
-  - name: stg__fhv_tripdata
-    description: ""
-    columns:
-      - name: fhv_trip_id
-        description: ""
-
-      - name: dispatch_base_license_num
-        description: ""
-
-      - name: pickup_datetime
-        description: ""
-
-      - name: dropoff_datetime
-        description: ""
-
-      - name: pickup_date_only
-        description: ""
-
-      - name: dropoff_date_only
-        description: ""
-
-      - name: taxi_zone_began
-        description: ""
-
-      - name: taxi_zone_ended
-        description: ""
-
-      - name: filename
-        description: ""
-
-  - name: stg__fhvhv_tripdata
-    description: ""
-    columns:
-      - name: fhvhv_trip_id
-        description: ""
-
-      - name: taxi_license_number
-        description: ""
-
-      - name: dispatch_base_license_number
-        description: ""
-
-      - name: pickup_datetime
-        description: ""
-
-      - name: dropoff_datetime
-        description: ""
-
-      - name: pickup_date_only
-        description: ""
-
-      - name: dropoff_date_only
-        description: ""
-
-      - name: taxi_zone_location_began
-        description: ""
-
-      - name: taxi_zone_location_ended
-        description: ""
-
-      - name: original_base_of_trip_request
-        description: ""
-
-      - name: datetime_of_trip_request
-        description: ""
-
-      - name: datetime_of_driver_arrival
-        description: ""
-
-      - name: trip_miles
-        description: ""
-
-      - name: trip_time_seconds
-        description: ""
-
-      - name: trip_fare_amount
-        description: ""
-
-      - name: tolls_paid_amount
-        description: ""
-
-      - name: bcf_collected_amount
-        description: ""
-
-      - name: sales_tax_amount
-        description: ""
-
-      - name: congestion_surcharge_amount
-        description: ""
-
-      - name: airport_fee_amount
-        description: ""
-
-      - name: tips_amount
-        description: ""
-
-      - name: driver_pay_amount
-        description: ""
-
-      - name: shared_request_flag
-        description: ""
-
-      - name: shared_match_flag
-        description: ""
-
-      - name: access_a_ride_flag
-        description: ""
-
-      - name: wav_request_flag
-        description: ""
-
-      - name: wav_match_flag
-        description: ""
-
-      - name: filename
-        description: ""
-
-  - name: stg__green_tripdata
-    description: ""
-    columns:
-      - name: green_trip_id
-        description: ""
-
-      - name: lpep_provider_id
-        description: ""
-
-      - name: lpep_pickup_datetime
-        description: ""
-
-      - name: lpep_dropoff_datetime
-        description: ""
-
-      - name: lpep_pickup_date_only
-        description: ""
-
-      - name: lpep_dropoff_date_only
-        description: ""
-
-      - name: passenger_count_trip
-        description: ""
-
-      - name: trip_miles
-        description: ""
-
-      - name: taxi_zone_location_pickup
-        description: ""
-
-      - name: taxi_zone_location_dropoff
-        description: ""
-
-      - name: trip_code_id
-        description: ""
-
-      - name: store_and_fwd_flag
-        description: ""
-
-      - name: trip_payment_type
-        description: ""
-
-      - name: trip_fare_amount
-        description: ""
-
-      - name: extra_charges_trip
-        description: ""
-
-      - name: mta_tax_amount
-        description: ""
-
-      - name: improvement_surcharge
-        description: ""
-
-      - name: tip_amount_nocash
-        description: ""
-
-      - name: tolls_amount
-        description: ""
-
-      - name: total_amount_lesscash
-        description: ""
-
-      - name: trip_type
-        description: ""
-
-      - name: filename
-        description: ""
-
-  - name: stg__yellow_tripdata
-    description: ""
-    columns:
-      - name: yellow_trip_id
-        description: ""
-
-      - name: tpep_provider_id
-        description: ""
-
-      - name: tpep_pickup_datetime
-        description: ""
-
-      - name: tpep_dropoff_datetime
-        description: ""
-
-      - name: tpep_pickup_date_only
-        description: ""
-
-      - name: tpep_dropoff_date_only
-        description: ""
-
-      - name: passenger_count_trip
-        description: ""
-
-      - name: trip_miles
-        description: ""
-
-      - name: taxi_zone_location_pickup
-        description: ""
-
-      - name: taxi_zone_location_dropoff
-        description: ""
-
-      - name: trip_code_id
-        description: ""
-
-      - name: store_and_fwd_flag
-        description: ""
-
-      - name: trip_payment_type
-        description: ""
-
-      - name: trip_fare_amount
-        description: ""
-
-      - name: extra_charges_trip
-        description: ""
-
-      - name: mta_tax_amount
-        description: ""
-
-      - name: improvement_surcharge
-        description: ""
-
-      - name: tip_amount_nocash
-        description: ""
-
-      - name: tolls_amount
-        description: ""
-
-      - name: total_amount_lesscash
-        description: ""
-
-      - name: congestion_surcharge_amount
-        description: ""
-
-      - name: airport_fee_amount
-        description: ""
-
-      - name: filename
-        description: ""
-
-
-#raw data sources
+#raw data sources with corresponding tests
 
 sources:
   - name: main
@@ -378,103 +9,372 @@ sources:
         columns:
           - name: tripduration
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: starttime
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: stoptime
             data_type: CHARACTER VARYING(256)
-          - name: start station id
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "start station id"
             data_type: CHARACTER VARYING(256)
-          - name: start station name
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "start station name"
             data_type: CHARACTER VARYING(256)
-          - name: start station latitude
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "start station latitude"
             data_type: CHARACTER VARYING(256)
-          - name: start station longitude
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "start station longitude"
             data_type: CHARACTER VARYING(256)
-          - name: end station id
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "end station id"
             data_type: CHARACTER VARYING(256)
-          - name: end station name
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "end station name"
             data_type: CHARACTER VARYING(256)
-          - name: end station latitude
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "end station latitude"
             data_type: CHARACTER VARYING(256)
-          - name: end station longitude
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
+          - name: "end station longitude"
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: bikeid
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: usertype
             data_type: CHARACTER VARYING(256)
-          - name: birth year
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - accepted_values:
+                  values: ['Subscriber', 'Customer', NULL]
+
+          - name: "birth year"
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: gender
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - accepted_values:
+                  values: ['0', '1', '2', NULL]
+
           - name: ride_id
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: rideable_type
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - accepted_values:
+                  values: ['docked_bike', 'classic_bike', 'electric_bike', NULL]
+
           - name: started_at
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: ended_at
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: start_station_name
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: start_station_id
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: end_station_name
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: end_station_id
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: start_lat
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: start_lng
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: end_lat
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: end_lng
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+
           - name: member_casual
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - accepted_values:
+                  values: ['casual', 'member', NULL]
+
           - name: filename
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
 
       - name: central_park_weather
         columns:
           - name: station
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - accepted_values:
+                  values: ['USW00094728']
           - name: name
             data_type: CHARACTER VARYING(256)
+            tests: 
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - accepted_values:
+                  values: ['NY CITY CENTRAL PARK, NY US']
           - name: date
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt.unique
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: awnd
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: prcp
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: snow
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: snwd
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: tmax
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: tmin
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: filename
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
 
       - name: fhv_bases
         columns:
           - name: base_number
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: base_name
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: dba
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: dba_category
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: filename
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
 
       - name: fhv_tripdata
         columns:
           - name: dispatching_base_num
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - dbt.relationship:
+                  to: ref('fhv_bases')
+                  field: base_number
           - name: pickup_datetime
             data_type: TIMESTAMP
           - name: dropoff_datetime
@@ -487,6 +387,14 @@ sources:
             data_type: INTEGER
           - name: affiliated_base_number
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - dbt.relationship:
+                  to: ref('fhv_bases')
+                  field: base_number
           - name: filename
             data_type: CHARACTER VARYING(256)
 
@@ -494,12 +402,36 @@ sources:
         columns:
           - name: hvfhs_license_num
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: dispatching_base_num
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - dbt.relationship:
+                  to: ref('fhv_bases')
+                  field: base_number
           - name: originating_base_num
             data_type: CHARACTER VARYING(256)
+            tests:
+              - dbt.not_null
+              - dbt_expectations.expect_column_to_exist
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
+              - dbt.relationship:
+                  to: ref('fhv_bases')
+                  field: base_number
           - name: request_datetime
             data_type: TIMESTAMP
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: varchar(256)
           - name: on_scene_datetime
             data_type: TIMESTAMP
           - name: pickup_datetime
