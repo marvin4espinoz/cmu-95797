@@ -9,21 +9,21 @@ with source as (
 renamed as (
     select
         distinct
-        base_number,
-        base_name as company_name,
-        dba as company_service_name,
-        dba_category as ride_share_service_used,
+        trim(upper(base_number)) as base_number,
+        {{ trup('base_name') }} as company_name,
+        {{ trup('dba') }} as company_service_name,
+        {{ trup('dba_category') }} as ride_share_service_used,
         filename
     from source
 ),
 
 cleaned as (
     select
-        COALESCE(base_number, 'Unknown') as base_number, -- primary key
-        COALESCE(company_name, 'Unknown') as company_name,
-        COALESCE(company_service_name, 'Unknown') as company_service_name,
-        COALESCE(ride_share_service_used, 'Unknown') as ride_share_service_used,
-        COALESCE(filename, 'Unknown') as filename
+        COALESCE(base_number, NULL) as base_number, -- primary key
+        COALESCE(company_name, NULL) as base_name,
+        COALESCE(company_service_name, NULL) as company_service_name,
+        COALESCE(ride_share_service_used, NULL) as ride_share_service_used,
+        COALESCE(filename, NULL) as filename
     from renamed
 )
 

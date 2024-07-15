@@ -18,7 +18,7 @@ renamed as (
         PULocationID as taxi_zone_location_pickup,
         DOLocationID as taxi_zone_location_dropoff,
         RatecodeID as trip_code_id,
-        store_and_fwd_flag,
+        {{flag_to_bool("store_and_fwd_flag")}} as store_and_fwd_flag,
         payment_type as trip_payment_type,
         fare_amount as trip_fare_amount,
         extra as extra_charges_trip,
@@ -31,33 +31,35 @@ renamed as (
         airport_fee as airport_fee_amount,
         filename
     from source
+        WHERE tpep_pickup_datetime < TIMESTAMP '2022-12-31' -- drop rows in the future
+          AND trip_distance >= 0 -- drop negative trip_distance
 ),
 
 cleaned as (
     select
-        COALESCE(concat(tpep_provider_id, '-', tpep_pickup_datetime, '-', tpep_dropoff_datetime, '-', taxi_zone_location_pickup, '-', taxi_zone_location_dropoff), 'Unknown') as yellow_trip_id,
-        COALESCE(tpep_provider_id, -1) as tpep_provider_id,
-        COALESCE(tpep_pickup_datetime, '1900-01-01 00:00:00'::timestamp) as tpep_pickup_datetime,
-        COALESCE(tpep_dropoff_datetime, '1900-01-01 00:00:00'::timestamp) as tpep_dropoff_datetime,
-        COALESCE(tpep_pickup_date_only, '1900-01-01'::date) as tpep_pickup_date_only,
-        COALESCE(tpep_dropoff_date_only, '1900-01-01'::date) as tpep_dropoff_date_only,
-        COALESCE(passenger_count_trip, -1) as passenger_count_trip,
-        COALESCE(trip_miles, -1) as trip_miles,
-        COALESCE(taxi_zone_location_pickup, -1) as taxi_zone_location_pickup,
-        COALESCE(taxi_zone_location_dropoff, -1) as taxi_zone_location_dropoff,
-        COALESCE(trip_code_id, -1) as trip_code_id,
-        COALESCE(store_and_fwd_flag, 'Unknown') as store_and_fwd_flag,
-        COALESCE(trip_payment_type, -1) as trip_payment_type,
-        COALESCE(trip_fare_amount, -1) as trip_fare_amount,
-        COALESCE(extra_charges_trip, -1) as extra_charges_trip,
-        COALESCE(mta_tax_amount, -1) as mta_tax_amount,
-        COALESCE(improvement_surcharge, -1) as improvement_surcharge,
-        COALESCE(tip_amount_nocash, -1) as tip_amount_nocash,
-        COALESCE(tolls_amount, -1) as tolls_amount,
-        COALESCE(total_amount_lessCash, -1) as total_amount_lessCash,
-        COALESCE(congestion_surcharge_amount, -1) as congestion_surcharge_amount,
-        COALESCE(airport_fee_amount, -1) as airport_fee_amount,
-        COALESCE(filename, 'Unknown') as filename
+        COALESCE(concat(tpep_provider_id, '-', tpep_pickup_datetime, '-', tpep_dropoff_datetime, '-', taxi_zone_location_pickup, '-', taxi_zone_location_dropoff), NULL) as yellow_trip_id,
+        COALESCE(tpep_provider_id, NULL) as tpep_provider_id,
+        COALESCE(tpep_pickup_datetime, NULL) as tpep_pickup_datetime,
+        COALESCE(tpep_dropoff_datetime, NULL) as tpep_dropoff_datetime,
+        COALESCE(tpep_pickup_date_only, NULL) as tpep_pickup_date_only,
+        COALESCE(tpep_dropoff_date_only, NULL) as tpep_dropoff_date_only,
+        COALESCE(passenger_count_trip, NULL) as passenger_count_trip,
+        COALESCE(trip_miles, NULL) as trip_miles,
+        COALESCE(taxi_zone_location_pickup, NULL) as taxi_zone_location_pickup,
+        COALESCE(taxi_zone_location_dropoff, NULL) as taxi_zone_location_dropoff,
+        COALESCE(trip_code_id, NULL) as trip_code_id,
+        COALESCE(store_and_fwd_flag, NULL) as store_and_fwd_flag,
+        COALESCE(trip_payment_type, NULL) as trip_payment_type,
+        COALESCE(trip_fare_amount, NULL) as trip_fare_amount,
+        COALESCE(extra_charges_trip, NULL) as extra_charges_trip,
+        COALESCE(mta_tax_amount, NULL) as mta_tax_amount,
+        COALESCE(improvement_surcharge, NULL) as improvement_surcharge,
+        COALESCE(tip_amount_nocash, NULL) as tip_amount_nocash,
+        COALESCE(tolls_amount, NULL) as tolls_amount,
+        COALESCE(total_amount_lessCash, NULL) as total_amount_lessCash,
+        COALESCE(congestion_surcharge_amount, NULL) as congestion_surcharge_amount,
+        COALESCE(airport_fee_amount, NULL) as airport_fee_amount,
+        COALESCE(filename, NULL) as filename
     from renamed
 )
 

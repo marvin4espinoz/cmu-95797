@@ -4,56 +4,96 @@ with source as (
 renamed as (
     select
         distinct
+        --timestamp information and trip duration
         tripduration::int as tripduration_sec,
-        case 
-            when tripduration::int <= 2845 then tripduration::int 
-            else null 
-         end as tripduration_sec_clean,
+        case when tripduration::int <= 2845 then tripduration::int else null end as tripduration_sec_clean,
         {{ cast_to_timestamp('starttime') }} as start_time,
-        {{ cast_to_timestamp('stoptime') }} as stoptime,
-        TRIM("start station id") AS start_station_id,
-        UPPER(TRIM("start station name")) AS start_station_name,
-        {{ round_coordinates('"start station latitude"', 4) }} AS start_station_latitude,
-        {{ round_coordinates('"start station longitude"', 4) }} AS start_station_longitude,
-        {{ format_location('start_station_latitude', 'start_station_longitude') }} AS start_location,
-        TRIM("end station id") AS end_station_id,
-        UPPER(TRIM("end station name")) AS end_station_name,
-        {{ round_coordinates('"end station latitude"', 4) }} AS end_station_latitude,
-        {{ round_coordinates('"end station longitude"', 4) }} AS end_station_longitude,
-        {{ format_location('end_station_latitude', 'end_station_longitude') }} AS end_location,
-        TRIM(bikeid) as bikeid,
-        UPPER(TRIM(usertype)) as usertype,
+        {{ cast_to_timestamp('stoptime') }} as stop_time,
+        
+        --columns with spaces between them that have "duplicate" version with underscores
+        --start station columns
+        {{ trup('"start station id"') }} AS "start station id",
+        {{ trup('"start station name"') }} AS "start station name",
+        {{ round_coordinates('"start station latitude"', 4) }} AS "start station latitude",
+        {{ round_coordinates('"start station longitude"', 4) }} AS "start station longitude",
+        {{ format_location('"start station latitude"', '"start station longitude"') }} AS start_location_lat_long,
+
+        --end station columns
+        {{ trup('"end station id"') }} AS "end station id",
+        {{ trup('"end station name"') }} AS "end station name",
+        {{ round_coordinates('"end station latitude"', 4) }} AS "end station latitude",
+        {{ round_coordinates('"end station longitude"', 4) }} AS "end station longitude",
+        {{ format_location('"end station latitude"', '"end station longitude"') }} AS end_location_lat_long,
+
+        --columns without spaces between them that have "duplicate" version without underscores
+        -- timestamps - p2 - second set of columns
+        {{ cast_to_timestamp('started_at') }} as started_at,--timestamp 2
+        {{ cast_to_timestamp('ended_at') }} as ended_at,--timestamp 2
+
+        --start station columns - p2 - second set
+        {{ trup('start_station_id') }} as start_station_id,
+        {{ trup('start_station_name') }} as start_station_name,
+        {{ round_coordinates('start_lat',4) }} as start_lat_round,
+        {{ round_coordinates('start_lng', 4) }} as start_long_round,
+        {{ format_location('start_lat_round', 'start_long_round') }} AS start_location_lat_long_2,
+
+        --end station columns - p2 - second set
+        {{ trup('end_station_id') }} as end_station_id,
+        {{ trup('end_station_name') }} as end_station_name,
+        {{ round_coordinates('end_lat',4) }} as end_lat_round,
+        {{ round_coordinates('end_lng', 4) }} as end_long_round,
+        {{ format_location('end_lat_round', 'end_long_round') }} AS end_location_lat_long_2,
+
+        --other identification columns
+        {{ trup('bikeid') }} as bikeid,
+        {{ trup('usertype') }} as usertype,
         "birth year" AS birth_year,
         {{ calculate_age('"birth year"') }} AS age,
-        UPPER({{ clean_gender('gender') }}) AS gender_clean,
+        {{ clean_gender('gender') }} AS gender_clean,
         filename
     from source
 ),
 final as (
     select
-        COALESCE(concat(start_station_id,'-',end_station_id,'-', start_time, '-', stoptime, '-', bikeid),'Unknown') as bike_trip_id, --primary key
-        --COALESCE(tripduration_sec, -1) AS tripduration_sec,
-        COALESCE(tripduration_sec_clean, -1) AS tripduration_sec_clean,
-        COALESCE(start_time, '1900-01-01 00:00:00'::timestamp) AS start_time,
-        COALESCE(stoptime, '1900-01-01 00:00:00'::timestamp) AS stoptime,
-        COALESCE(start_station_id, 'Unknown') AS start_station_id,
-        COALESCE(start_station_name, 'Unknown') AS start_station_name,
-        --COALESCE(start_station_latitude, -999.9999) AS start_station_latitude,
-        --COALESCE(start_station_longitude, -999.9999) AS start_station_longitude,
-        COALESCE(start_location, 'Unknown') AS start_location,
-        COALESCE(end_station_id, 'Unknown') AS end_station_id,
-        COALESCE(end_station_name, 'Unknown') AS end_station_name,
-        --COALESCE(end_station_latitude, -999.9999) AS end_station_latitude,
-        --COALESCE(end_station_longitude, -999.9999) AS end_station_longitude,
-        COALESCE(end_location, 'Unknown') AS end_location,
-        COALESCE(bikeid, 'Unknown') AS bikeid,
-        COALESCE(usertype, 'Unknown') AS usertype,
-        COALESCE(birth_year, 'Unknown') AS birth_year,        
-        COALESCE(age, -1) AS age,
-        COALESCE(gender_clean, 'Unknown') AS gender_clean,
-        COALESCE(filename, 'Unknown') AS filename
+
+        --timestamp information
+        coalesce(coalesce(start_time, started_at), NULL) as started_at_ts,
+        coalesce(coalesce(stop_time, ended_at), NULL) as ended_at_ts,
+        CASE 
+            when coalesce(coalesce(tripduration_sec_clean, datediff('second', started_at_ts, ended_at_ts)), NULL) > 2845 THEN null
+            when coalesce(coalesce(tripduration_sec_clean, datediff('second', started_at_ts, ended_at_ts)), NULL) < 0 THEN null
+            else coalesce(coalesce(tripduration_sec_clean, datediff('second', started_at_ts, ended_at_ts)), NULL)::int
+        END as tripduration_sec_final,
+
+        --start station information
+        coalesce(coalesce("start station id", start_station_id), NULL) as start_station_id,  
+        coalesce(coalesce("start station name", start_station_name), NULL) as start_station_name,
+        coalesce(coalesce("start station latitude", start_lat_round), NULL) as start_station_latitude,
+        coalesce(coalesce("start station longitude", start_long_round), NULL) as start_station_longitude,
+        coalesce(start_location_lat_long, start_location_lat_long_2) as start_location_lat_long_final,
+
+        --end station information
+        coalesce(coalesce("end station id", end_station_id), NULL) as end_station_id,  
+        coalesce(coalesce("end station name", end_station_name), NULL) as end_station_name,
+        coalesce(coalesce("end station latitude", end_lat_round), NULL) as end_station_latitude,
+        coalesce(coalesce("end station longitude", end_long_round), NULL) as end_station_longitude,
+        coalesce(end_location_lat_long, end_location_lat_long_2) as end_location_lat_long_final,
+        
+        --other identification columns
+        COALESCE(bikeid, NULL) AS bikeid,
+        COALESCE(usertype, NULL) AS usertype,
+        COALESCE(birth_year, NULL) AS birth_year,        
+        COALESCE(age, NULL) AS age,
+        COALESCE(gender_clean, NULL) AS gender_clean,
+        -- primary key
+        COALESCE(concat(start_station_id,'-',end_station_id,'-', started_at_ts, '-', ended_at_ts, '-', bikeid), NULL) as bike_trip_id,
+
+        --filename
+        COALESCE(filename, NULL) AS filename
+
+
     from renamed
 )
 
-select * from final
 
+select * from final
