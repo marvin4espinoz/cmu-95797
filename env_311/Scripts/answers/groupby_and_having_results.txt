@@ -1,0 +1,127 @@
+┌───────────────────────────────────────────────┬──────────────┐
+│                     Zone                      │ count_star() │
+│                    varchar                    │    int64     │
+├───────────────────────────────────────────────┼──────────────┤
+│ Long Island City/Queens Plaza                 │        88231 │
+│ Elmhurst/Maspeth                              │        66595 │
+│ Brooklyn Navy Yard                            │        27056 │
+│ Hammels/Arverne                               │        60140 │
+│ Kensington                                    │        67982 │
+│ Bensonhurst East                              │        88730 │
+│ Auburndale                                    │        27378 │
+│ Bath Beach                                    │        37669 │
+│ Crotona Park East                             │        97073 │
+│ Riverdale/North Riverdale/Fieldston           │        54612 │
+│ Forest Park/Highland Park                     │         5044 │
+│ Oakland Gardens                               │        21145 │
+│ College Point                                 │        45616 │
+│ Seaport                                       │        73293 │
+│ Breezy Point/Fort Tilden/Riis Beach           │         3282 │
+│ Arden Heights                                 │         8881 │
+│ Newark Airport                                │         1972 │
+│ Governor's Island/Ellis Island/Liberty Island │           15 │
+│ Flushing Meadows-Corona Park                  │        17047 │
+│ Coney Island                                  │        91795 │
+│ Queens Village                                │        90843 │
+│ Starrett City                                 │        48650 │
+│ Rosedale                                      │        59328 │
+│ Fresh Meadows                                 │        28600 │
+│ Dyker Heights                                 │        53900 │
+│ Parkchester                                   │        95750 │
+│ Douglaston                                    │        17748 │
+│ Prospect Park                                 │        20786 │
+│ Heartland Village/Todt Hill                   │        32993 │
+│ Saint George/New Brighton                     │        79074 │
+│ West Brighton                                 │        25899 │
+│ Battery Park                                  │         4882 │
+│ Queensbridge/Ravenswood                       │        54855 │
+│ Kew Gardens Hills                             │        55930 │
+│ Red Hook                                      │        63852 │
+│ East Flushing                                 │        35661 │
+│ Hollis                                        │        41158 │
+│ Columbia Street                               │        17436 │
+│ Manhattan Beach                               │        37726 │
+│ Fordham South                                 │        87980 │
+│ Marine Park/Floyd Bennett Field               │         3598 │
+│ Grymes Hill/Clifton                           │        34146 │
+│ Stuy Town/Peter Cooper Village                │        76066 │
+│ Maspeth                                       │        86140 │
+│ Westerleigh                                   │        24253 │
+│ Kew Gardens                                   │        69359 │
+│ Marble Hill                                   │        40964 │
+│ Springfield Gardens South                     │        67032 │
+│ Longwood                                      │        89374 │
+│ Hillcrest/Pomonok                             │        73433 │
+│ Ocean Parkway South                           │        36464 │
+│ Middle Village                                │        68617 │
+│ Rockaway Park                                 │        20324 │
+│ Windsor Terrace                               │        46770 │
+│ NA                                            │        29281 │
+│ Howard Beach                                  │        43636 │
+│ Highbridge Park                               │         3563 │
+│ New Dorp/Midland Beach                        │        18331 │
+│ Great Kills                                   │        19832 │
+│ Cobble Hill                                   │        47298 │
+│ Crotona Park                                  │         5846 │
+│ Far Rockaway                                  │        67368 │
+│ Bellerose                                     │        24388 │
+│ Glen Oaks                                     │        24764 │
+│ South Williamsburg                            │        54587 │
+│ Gowanus                                       │        64437 │
+│ East Elmhurst                                 │        80634 │
+│ Cambria Heights                               │        37527 │
+│ Glendale                                      │        82124 │
+│ Bayside                                       │        60401 │
+│ Pelham Bay Park                               │         7946 │
+│ Roosevelt Island                              │        19646 │
+│ Bloomfield/Emerson Hill                       │        46406 │
+│ Bronx Park                                    │        15645 │
+│ Madison                                       │        79670 │
+│ Willets Point                                 │         2213 │
+│ Astoria Park                                  │         1396 │
+│ Green-Wood Cemetery                           │         1550 │
+│ Rikers Island                                 │           15 │
+│ Jamaica Bay                                   │           78 │
+│ Great Kills Park                              │           63 │
+│ Bloomingdale                                  │        73269 │
+│ Carroll Gardens                               │        77415 │
+│ Gravesend                                     │        50692 │
+│ Inwood Hill Park                              │         8946 │
+│ Randalls Island                               │         4668 │
+│ Saint Michaels Cemetery/Woodside              │        11618 │
+│ Country Club                                  │        10360 │
+│ Springfield Gardens North                     │        75057 │
+│ Westchester Village/Unionport                 │        91997 │
+│ Jamaica Estates                               │        50819 │
+│ North Corona                                  │        85987 │
+│ Laurelton                                     │        61742 │
+│ Ozone Park                                    │        53587 │
+│ Whitestone                                    │        43747 │
+│ Queensboro Hill                               │        42414 │
+│ Sunset Park East                              │        79232 │
+│ Pelham Bay                                    │        44912 │
+│ Financial District South                      │        78583 │
+│ Chinatown                                     │        77604 │
+│ Arrochar/Fort Wadsworth                       │        18320 │
+│ Eltingville/Annadale/Prince's Bay             │        13082 │
+│ Broad Channel                                 │         1592 │
+│ South Beach/Dongan Hills                      │        26882 │
+│ Rossville/Woodrow                             │         7700 │
+│ Oakwood                                       │        10947 │
+│ Manhattanville                                │        92764 │
+│ Murray Hill-Queens                            │        63984 │
+│ Allerton/Pelham Gardens                       │        79245 │
+│ Briarwood/Jamaica Hills                       │        75431 │
+│ Brighton Beach                                │        73664 │
+│ Rego Park                                     │        86458 │
+│ Van Cortlandt Park                            │        21894 │
+│ Mariners Harbor                               │        45160 │
+│ Bay Terrace/Fort Totten                       │        22944 │
+│ City Island                                   │         7753 │
+│ Port Richmond                                 │        22583 │
+│ Charleston/Tottenville                        │        13165 │
+│ Stapleton                                     │        62138 │
+│ Freshkills Park                               │          786 │
+├───────────────────────────────────────────────┴──────────────┤
+│ 120 rows                                           2 columns │
+└──────────────────────────────────────────────────────────────┘
